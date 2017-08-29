@@ -1,40 +1,50 @@
 <title> AUTISMUS MAXIMUS </title>
-
-<p> lets see if this works </br>
-    two plus three is <p id="RESULT"> </p> </p>
-<script> src="https://github.com/javascriptdisc/html/blob/master/jquery-3.2.1.min.js" </script>
+<input type="text" id="userInput">give me input</input>
+<button id="submitter">Submit</button>
+<div id="output"></div>
 <script>
-
+    src = "https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"
+</script>
+<script>
     'use strict'
+    var didClickIt = false;
+    document.getElementById("submitter").addEventListener("click", function () {
+        // same as onclick, keeps the JS and HTML separate
+        didClickIt = true;
+    });
 
-var A = [];
-A[0] = false;
-A[1] = false;
+    setInterval(function () {
+        // this is the closest you get to an infinite loop in JavaScript
+        if (didClickIt) {
+            didClickIt = false;
+            // document.write causes silly problems, do this instead (or better yet, use a library like jQuery to do this stuff for you)
+            var o = document.getElementById("output"), max = document.getElementById("userInput").value;
+            var A = [];
+            A[0] = false;
+            A[1] = false;
 
-for(var i=0;i<98;i++){
-    A.push(true);
+            for (var i = 0; i < max; i++) {
+                A.push(true);
 
-}
-for(var i = 0; i < Math.sqrt(A.length); i++){
-    if(A[i] == true){
-        var j = i*i;
-        while(j<A.length){
-            A[j] = false;
-            j=j+i;
+            }
+            for (var i = 0; i < Math.sqrt(A.length); i++) {
+                if (A[i] == true) {
+                    var j = i * i;
+                    while (j < A.length) {
+                        A[j] = false;
+                        j = j + i;
+                    }
+                }
+            }
+            var disp = [];
+            for (var i = 0; i < A.length; i++) {
+                if (A[i] == true) {
+                    disp.push(i);
+                }
+
+            }
+            o.innerHTML=disp.toString();
         }
-    }
-}
-var disp = [];
-for(var i=0;i<A.length;i++){
-    if(A[i] == true){
-        disp.push(i);
-    }
-
-}
-document.getElementById("RESULT").innerHTML = disp.toString();
-
+    }, 500);
 
 </script>
-
-
-    
