@@ -2,16 +2,36 @@
 
 <p> lets see if this works </br>
     two plus three is <p id="RESULT"> </p> </p>
-
+<script> src="https://github.com/javascriptdisc/html/blob/master/jquery-3.2.1.min.js" </script>
 <script>
 
     'use strict'
 
-    var x = 2;
-    var y = 3;
-    var z = (x + y)
-    document.getElementById("RESULT").innerHTML = z;
-    alert('fuck you blitz haha ur mum REKT 1337 BY H4XX0R')
+var A = [];
+A[0] = false;
+A[1] = false;
+
+for(var i=0;i<98;i++){
+    A.push(true);
+
+}
+for(var i = 0; i < Math.sqrt(A.length); i++){
+    if(A[i] == true){
+        var j = i*i;
+        while(j<A.length){
+            A[j] = false;
+            j=j+i;
+        }
+    }
+}
+var disp = [];
+for(var i=0;i<A.length;i++){
+    if(A[i] == true){
+        disp.push(i);
+    }
+
+}
+document.getElementById("RESULT").innerHTML = disp.toString();
 
 
 </script>
