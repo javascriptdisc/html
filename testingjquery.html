@@ -15,18 +15,23 @@
 
 <body>
 
-    <input type="text" value="some text">
+    <input type="text" value="0">
     <p></p>
 
     <script>
         $("input")
             .keyup(function () {
                 var value = $(this).val();
+                if(value > 1000000){
+                    value = 1000000;
+                    $("input").val(value);
+                    alert('stop being jewish');
+                }
                 var A = [];
                 A[0] = false;
                 A[1] = false;
 
-                for (var i = 0; i < value; i++) {
+                for (var i = 0; i < value-1; i++) {
                     A.push(true);
 
                 }
